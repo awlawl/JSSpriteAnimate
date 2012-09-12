@@ -1,0 +1,1 @@
+Work in progress javascript and canvas sprite animations.
