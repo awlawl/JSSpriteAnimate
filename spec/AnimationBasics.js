@@ -2,9 +2,12 @@ describe("Basic Animations", function() {
   
   var testImage = "spec/TestImages/TestAnimation.gif";
   var animation;
+  var frameSize = {X:64,Y:64};
+  var testDuration = 1000;
+  var testFrameCount = 5;
   
   beforeEach(function() {
-    animation = new Animation(testImage);
+    animation = new Animation(testImage, frameSize, testDuration, testFrameCount);
   });
   
   it("must exist", function() {
@@ -23,5 +26,27 @@ describe("Basic Animations", function() {
     expect(animation.image.src).toContain(testImage);
   });
   
+  it("must track the size of each frame", function() {
+	expect(animation.frameSize).toBeDefined();
+  });
   
+  it("must have the correct size of each frame", function() {
+	expect(animation.frameSize).toEqual(frameSize);
+  });
+  
+  it("must track the duration of the animation", function() {
+	expect(animation.durationMS).toBeDefined();
+  });
+  
+  it("must have the correct duration", function() {
+	expect(animation.durationMS).toBe(testDuration);
+  });
+  
+  it("must track the number of frames", function() {
+	expect(animation.frameCount).toBeDefined();
+  });
+  
+  it("must track the correct number of frames", function() {
+	expect(animation.frameCount).toBe(5);
+  });
 });
