@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="src/Animation.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+
+<script>
+
+var animation;
+var time = 0;
+var context;
+
+$(document).ready(function() {
+	
+	var canvas = document.getElementById("animationCanvas");
+	context = canvas.getContext("2d");
+	animation = new Animation("spec/TestImages/skeleton.gif",{X:96,Y:96},1000,8, function() {
+		setupNextFrame();
+	});
+	
+	
+	
+	/*context.fillStyle = "#00f";
+	context.strokeStyle = "#f00";
+	context.fillRect(0,0,150,100);*/
+});
+
+function setupNextFrame() {
+	setTimeout(function() { 
+		animation.drawFrame(time,{X:0, Y:0},context); 
+		time+=100;
+		setupNextFrame();
+		},100);			
+}
+</script>
+</head>
+<body>
+<canvas id="animationCanvas" width="96" height="96"></canvas>
+</body>
+</html>
